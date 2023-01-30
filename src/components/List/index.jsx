@@ -3,9 +3,10 @@ import './index.css'
 import Item from '../Item'
 export default class Header extends Component {
     render() {
-        return ( <ul className="todo-main">
-       <Item/>
-    </ul>
+        const { todo,changeChecked } = this.props
+        return (<ul className="todo-main">
+            {todo.map(item => <Item {...item} key={item.id} changeChecked={changeChecked}/>)}
+        </ul>
         )
     }
 }
