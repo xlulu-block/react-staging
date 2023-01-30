@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import './index.css'
 import {nanoid} from 'nanoid'
+import PropTypes from 'prop-types'
 
 export default class Header extends Component {
+     // 限制prop传入数据格式
+    // 必传，函数
+    static propTypes={
+        changeListData:PropTypes.func.isRequired
+    }
     // 键盘抬起事件
     handleInputValue=(event)=>{
         const {keyCode,target}=event

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './index.css'
+// import PropTypes from 'prop-types'
 export default class Header extends Component {
     render() {
         return (  <div className="todo-footer">

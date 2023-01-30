@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 import './index.css'
+import PropTypes from 'prop-types'
 export default class Header extends Component {
+     // 限制prop传入数据格式
+    // 必传，函数
+    static propTypes={
+        changeChecked:PropTypes.func.isRequired,
+        deleteTodo:PropTypes.func.isRequired,
+    }
     state={
         showBtn:'none'
     }
@@ -16,6 +23,12 @@ export default class Header extends Component {
             this.props.changeChecked(id)
         }
     }
+    // 处理删除
+    handleDelete=(id)=>{
+        return ()=>{
+            this.props.deleteTodo(id)
+        }
+    }
     render() {
         const {id,name,done}=this.props
         const {showBtn}=this.state
@@ -25,7 +38,7 @@ export default class Header extends Component {
                     <input type="checkbox" defaultChecked={done} onChange={this.handleChecked(id)}/>
                     <span>{name}</span>
                 </label>
-                <button className="btn btn-danger" style={{ display:showBtn}}>删除</button>
+                <button className="btn btn-danger" style={{ display:showBtn}} onClick={this.handleDelete(id)}>删除</button>
             </li>
         )
     }
