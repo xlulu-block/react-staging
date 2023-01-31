@@ -35,7 +35,7 @@ export default class Header extends Component {
         return (
             <li onMouseOver={this.handleDeleteBtn(true)} onMouseOut={this.handleDeleteBtn(false)}>
                 <label>
-                    <input type="checkbox" defaultChecked={done} onChange={this.handleChecked(id)}/>
+                    <input type="checkbox" checked={done} onChange={this.handleChecked(id)}/>
                     <span>{name}</span>
                 </label>
                 <button className="btn btn-danger" style={{ display:showBtn}} onClick={this.handleDelete(id)}>删除</button>

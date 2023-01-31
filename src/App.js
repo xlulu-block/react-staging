@@ -6,7 +6,7 @@ import List from "./components/List";
 // 创建并暴露App组件
 export default class App extends Component{
     state={
-        todo:[{id:'001',name:'吃饭',done:false},{id:'002',name:'睡觉',done:false},{id:'003',name:'敲代码',done:false}],
+        todo:[{id:'001',name:'吃饭',done:false},{id:'002',name:'睡觉',done:true},{id:'003',name:'敲代码',done:false}],
     }
     // 新增列表数据
     changeListData=(data)=>{
@@ -35,9 +35,15 @@ export default class App extends Component{
     // 全选数据
     checkedAll=(flag)=>{
         const {todo}=this.state
-        const newTodo=todo.map((item)=>item.done=flag)
+        const newTodo=todo.map((item)=>{return {...item,done:flag}})
         this.setState({todo:newTodo})
         
+    }
+    // 清空所有已完成任务
+    clearAllChecked=()=>{
+        const {todo}=this.state
+        const notChecked=todo.filter(item=>item.done===false)
+        this.setState({todo:notChecked})
     }
     render(){
         const {todo}=this.state
@@ -45,7 +51,7 @@ export default class App extends Component{
                     <div className="todo-wrap">
                         <Header changeListData={this.changeListData}/>
                         <List todo={todo} changeChecked={this.changeChecked} deleteTodo={this.deleteTodo} />
-                        <Footer todo={todo} checkedAll={this.checkedAll} />
+                        <Footer todo={todo} checkedAll={this.checkedAll} clearAllChecked={this.clearAllChecked}/>
                     </div>
          </div>)
     }
