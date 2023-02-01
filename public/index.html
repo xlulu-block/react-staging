@@ -6,7 +6,8 @@
   <!-- %PUBLIC_URL%表示public文件夹的路径 -->
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
    <!-- 引入第三方css库 -->
-   <link rel="stylesheet" href="./css/bootstrap.css">
+   <!-- 这里如果引入本地的文件要以绝对路径引入，不然会出问题。也可以直接用cdn地址 -->
+   <link rel="stylesheet" href="/css/bootstrap.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
   <title>hello react</title>
