@@ -14,7 +14,7 @@ export default class index extends Component {
           {
           msgList.map(item => <li key={item.id}>
             {/* state传参 */}
-                <Link  to={{pathname:`/home/message/detail`,state:{id:item.id,msg:item.msg}}} >{item.msg}</Link>
+                <Link replace to={{pathname:`/home/message/detail`,state:{id:item.id,msg:item.msg}}} >{item.msg}</Link>
                 </li>
           )
             }

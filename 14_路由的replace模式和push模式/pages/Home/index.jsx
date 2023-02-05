@@ -10,10 +10,10 @@ export default class index extends Component {
       <div>
         <ul className="nav nav-tabs">
           <li>
-            <MyNavLink  to='/home/news'>News</MyNavLink>
+            <MyNavLink replace to='/home/news'>News</MyNavLink>
           </li>
           <li>
-            <MyNavLink  to='/home/message'>Msg</MyNavLink>
+            <MyNavLink replace to='/home/message'>Msg</MyNavLink>
           </li>
         </ul>
         {/* 路径和component一一匹配,提高效率 */}
