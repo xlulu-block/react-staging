@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import store from '../../redux/store'
-
+import { createAdd,createMinus } from "../../redux/count_action";
 export default class index extends Component {
     state={
         original:0
@@ -8,26 +8,26 @@ export default class index extends Component {
     // 加
     add = () => {
         const newValue=this.selectValue.value
-        store.dispatch({type:'add',data:Number(newValue)})
+        store.dispatch(createAdd(Number(newValue)))
     }
     // 减
     minus = () => { 
         const newValue=this.selectValue.value
-        store.dispatch({type:'minus',data:Number(newValue)})
+        store.dispatch(createMinus(Number(newValue)))
     }
     // 和为偶数时再加
     addIfOdd = () => {
         const newValue=this.selectValue.value
         const old =store.getState()
         if(old%2===0){
-            store.dispatch({type:'add',data:Number(newValue)})
+            store.dispatch(createAdd(Number(newValue)))
         }
     }
     // 异步相加
     addAsync = () => { 
         const newValue=this.selectValue.value
         setTimeout(()=>{
-            store.dispatch({type:'add',data:Number(newValue)})
+            store.dispatch(createAdd(Number(newValue)))
         },500)
     }
 
