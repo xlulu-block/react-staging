@@ -1,5 +1,10 @@
+// 引入连接函数
+import {connect} from 'react-redux'
+// 引入ui组件
+
+import {createAdd,createMinus,createAddAsyncAction} from '../../redux/count_action'
 import React, { Component } from 'react'
-export default class index extends Component {
+ class Count extends Component {
     // 加
     add = () => {
         const newValue=this.selectValue.value
@@ -45,3 +50,14 @@ export default class index extends Component {
         )
     }
 }
+
+// 简写方法，第二个参数，react-redux会依次用dispatch去调用
+export default connect(state=>({count:state}),
+    {
+        jia:createAdd,
+        jian:createMinus,
+        jiaAsync:createAddAsyncAction
+    }
+)(Count)
+
+
