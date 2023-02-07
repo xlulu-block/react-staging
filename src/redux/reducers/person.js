@@ -15,6 +15,8 @@ export default function personReducer(preState=initState,action){
 	//根据type决定如何加工数据
 	switch (type) {
 		case ADD_PERSON: //如果是加
+		// preState.unshift(data)  //这里不能写这句，这样的话违背了reducer里面只能是纯函数的原则
+		// 第二个原因，上面就算改变了preState的值，但是这个数组指向的地址还是不会发生变化。那么return出去之后就不会更新
 			return [data,...preState]
 		default:
 			return preState
