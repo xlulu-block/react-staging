@@ -1,40 +1,37 @@
 import React, { Component } from 'react'
-import store from '../../redux/store'
-import { createAdd,createMinus } from "../../redux/count_action";
 export default class index extends Component {
-    state={
-        original:0
-    }
     // 加
     add = () => {
         const newValue=this.selectValue.value
-        store.dispatch(createAdd(Number(newValue)))
+        // store.dispatch(createAdd(Number(newValue)))
+        this.props.jia(Number(newValue))
     }
     // 减
     minus = () => { 
         const newValue=this.selectValue.value
-        store.dispatch(createMinus(Number(newValue)))
+        // store.dispatch(createMinus(Number(newValue)))
+        this.props.jian(Number(newValue))
     }
     // 和为偶数时再加
     addIfOdd = () => {
         const newValue=this.selectValue.value
-        const old =store.getState()
+        const old =this.props.count
         if(old%2===0){
-            store.dispatch(createAdd(Number(newValue)))
+            this.props.jia(Number(newValue))
         }
     }
     // 异步相加
     addAsync = () => { 
         const newValue=this.selectValue.value
-        setTimeout(()=>{
-            store.dispatch(createAdd(Number(newValue)))
-        },500)
+        this.props.jiaAsync(Number(newValue),500)
     }
 
     render() {
+        console.log(this.props,'@');
+        const {count}=this.props
         return (
             <div>
-                <h4>当前num:{store.getState()}</h4>
+                <h4>当前num:{count}</h4>
                 <select ref={c=>this.selectValue=c} >
                     <option value='1'>1</option>
                     <option value='2'>2</option>

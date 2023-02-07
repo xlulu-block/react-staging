@@ -7,4 +7,5 @@ import {configureStore} from '@reduxjs/toolkit'
 //引入为Count组件服务的reducer
 import countReducer from './count_reducer'
 //暴露store
+// 最新的react—redux不需要写中间件
 export default configureStore({reducer:countReducer})
