@@ -2,7 +2,7 @@
 import {connect} from 'react-redux'
 // 引入ui组件
 
-import {createAdd,createMinus,createAddAsyncAction} from '../../redux/count_action'
+import {createAdd,createMinus,createAddAsyncAction} from '../../redux/action/count'
 import React, { Component } from 'react'
  class Count extends Component {
     // 加
@@ -20,7 +20,7 @@ import React, { Component } from 'react'
     // 和为偶数时再加
     addIfOdd = () => {
         const newValue=this.selectValue.value
-        const old =this.props.count
+        const old =this.props.count.num
         if(old%2===0){
             this.props.jia(Number(newValue))
         }
@@ -32,11 +32,10 @@ import React, { Component } from 'react'
     }
 
     render() {
-        console.log(this.props,'@');
-        const {count}=this.props
+        const {num}=this.props.count
         return (
             <div>
-                <h4>当前num:{count}</h4>
+                <h4>当前num:{num}</h4>
                 <select ref={c=>this.selectValue=c} >
                     <option value='1'>1</option>
                     <option value='2'>2</option>
