@@ -3,7 +3,6 @@ import {  ConfigProvider } from 'antd';
 import 'antd/dist/reset.css';
 import Count from './containers/count'
 // 需要在容器组件的上层传入store
-import store from './redux/store'
 export default class App extends Component {
   render() {
     return (
@@ -14,7 +13,7 @@ export default class App extends Component {
           },
         }}
       >
-        <Count store={store}/>
+        <Count/>
         
       </ConfigProvider>
     )
