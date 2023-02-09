@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {  ConfigProvider } from 'antd';
 import 'antd/dist/reset.css';
-import Demo from './components/04_fragment'
+import Demo from './components/Demo'
 // 需要在容器组件的上层传入store
 export default class App extends Component {
   render() {
